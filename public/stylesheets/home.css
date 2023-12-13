@@ -42,6 +42,11 @@ position: relative;
 
 .home__main__products__product p {
     color: var(--colorGris);
+    text-overflow: ellipsis;
+    width: 100%;
+
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .more {

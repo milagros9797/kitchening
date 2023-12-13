@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+ 
+<%- include('./partials/head',{
+  title : "Home"
+}) %>
+
+  <body class="home">
+    
+    <%- include('./partials/header') %>
+
+      <main>
+        <div>
+          <img class="home__main__banner" src="images/img-banner.jpg" alt="banner" >
+        </div>
+
+        <div class="home__main__products">
+          
+          <% products.forEach(product => { %>
+            <%- include('./partials/product-card', {
+              ...product
+            }) %>
+           
+          <% }) %>
+          
+
+       
+        </div>
+      </main>
+
+    <%- include('./partials/footer') %>
+     
+    
+  </body>
+</html>
