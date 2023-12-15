@@ -10,10 +10,23 @@
     <div class="col-12 col-md-10 mx-auto">
       <div class="card">
         <div class="card-header d-flex justify-content-between">
-            <h4 class="cart-title">Restaurantes</h4>
-            <a class="btn btn-dark" href="/productos/agregar">Nuevo</a>
+          
+          
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a class="text-primary"  href="/admin">Restaurantes</a></li>
+              <% if (locals.keyword) { %>
+                <li class="breadcrumb-item active" aria-current="page">resultado para:<%= 
+                  keyword %>
+              </li>
+              <% } %>
+            </ol>
+            </nav>
+
+           <a class="btn btn-dark" href="/productos/agregar">Nuevo</a>
         </div>
         <div class="card-body table-responsive">
+          <% if (products.length) { %>
           <table class="table">
             <thead>
               <tr>
@@ -56,6 +69,11 @@
               </tbody>
               
           </table>
+          <% } else {  %>
+            <div class="alert alert-warning" role="alert">
+               No hay productos para mostrar
+            </div>
+            <% } %>
         </div>
 
       </div>
