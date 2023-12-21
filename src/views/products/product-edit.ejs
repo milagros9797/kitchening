@@ -19,8 +19,8 @@
             
         </div>
         <div class="card-body">
-          <form action="" class="row">
-            <h3>Editado <%= name %></h3>
+          <form action="/productos/actualizar/<%= id %>?_method=PUT" class="row" method="POST">
+            <h3>Editando <%= name %></h3>
             <hr>
             <div class="col-12 col-md-6  mb-3">
                 <div class="form-floating ">
