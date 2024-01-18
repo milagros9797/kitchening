@@ -9,11 +9,16 @@ module.exports = [
         .notEmpty().withMessage('La categoria es obligatoria'),
     body('mainImage')
         .custom((value,{req})=> {
-            if(!req.file){
+            if(!req.files.mainImage){
                 return false
             }
             return true
         }).withMessage('Se requiere una imagen'),
     check('description')
-        .notEmpty().withMessage('La descripción es obligatoria'),
+        .notEmpty().withMessage('La descripción es obligatoria').bail()
+        .isLength({
+            min: 20,
+            max: 500
+
+        }).withMessage('La descripción debe tener entre 20 y 500 caracteres'),
 ]
