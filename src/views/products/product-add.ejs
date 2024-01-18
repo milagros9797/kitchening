@@ -19,40 +19,46 @@
             
         </div>
         <div class="card-body">
-          <form action="/productos/crear" method="POST" class="row">
+          <form action="/productos/crear" method="POST" class="row" enctype="multipart/form-data">
             <h3>Nuevo Restaurant</h3>
             <hr>
             <div class="col-12 col-md-6  mb-3">
                 <div class="form-floating ">
-                    <input name="name" type="text" class="form-control" id="name" >
+                    <input name="name" type="text" class="form-control <%= (locals.errors && errors.name) && 'is-invalid'  %>" id="name" value="<%= locals.old && old.name %>">
                     <label for="floatingInput">Nombre</label>
                   </div>
-
+                  <small class="text-danger ms-2"><%= (locals.errors && errors.name) && errors.name.msg %></small>
             </div>
             <div class="col-12 col-md-6  mb-3">
 
               <div class="form-floating">
-                <input name="address" type="text" class="form-control" id="address" >
+                <input name="address" type="text" class="form-control <%= (locals.errors && errors.address) && 'is-invalid'  %>" id="address" value="<%= locals.old && old.address %>" >
                 <label for="address">Dirección</label>
               </div>
+              <small class="text-danger ms-2"><%= (locals.errors && errors.address) && errors.address.msg %></small>
+
             </div>
             <div class="col-12 col-md-6  mb-3">
               <div class="form-floating">
-                  <select name="category" class="form-select" id="category" aria-label="Floating label select example">
+                  <select name="category" class="form-select <%= (locals.errors && errors.category) && 'is-invalid'  %>"  id="category" aria-label="Floating label select example">
                     <option value="" selected hidden></option>
-                    <option value="barato">Barato</option>
-                    <option value="romantico">Romantico</option>
-                    <option value="sofisticado">Sofisticado</option>
+                    <% categories.forEach(category => { %>
+                      <option value="<%= category %>"<%=( locals.old && old.category) && old.category == category ? 'selected' : null %> ><%= category %></option>
+                     
+                    <% }) %>
+
                   </select>
-                  <label for="floatingSelect">Categoría</label>
+                  <label for="category">Categoría</label>
                 </div>
+                <small class="text-danger ms-2"><%= (locals.errors && errors.category) && errors.category.msg %></small>
               
               </div>
               <div class="col-12 col-md-3  mb-3">
 
                     <input name="mainImage" type="file" class="form-control" id="mainImage" hidden >
                     <label class="btn btn-lg btn-outline-dark w-100"  for="mainImage">Imagen principal</label>
-                 
+                    <small class="text-danger ms-2"><%= (locals.errors && errors.mainImage) && errors.mainImage.msg %></small>
+
                   </div>
                   <div class="col-12 col-md-3  mb-3">
 
@@ -62,9 +68,11 @@
                     </div>
               <div class="col-12  mb-3">
                 <div class="form-floating">
-                    <textarea name="description" class="form-control"  id="description" style="height: 200px;"></textarea>
+                    <textarea name="description" class="form-control <%= (locals.errors && errors.description) && 'is-invalid' %>"  id="description" style="height: 200px;"><%= locals.old && old.description %></textarea>
                     <label for="description">Descripción</label>
                   </div>
+                  <small class="text-danger ms-2"><%= (locals.errors && errors.description) && errors.description.msg %></small>
+
               </div>
                       <div class="col-12 d-flex justify-content-end">
 

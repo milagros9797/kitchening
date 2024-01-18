@@ -1,6 +1,6 @@
 <article class="home__main__products__product">
     <div class="photo__container">
-      <img class="photo" src="images/<%= mainImage %>" alt="pdto-1" >
+      <img class="photo" src="images/<%= mainImage || 'default.jpg' %>" alt="pdto-1" >
       <img class="special" src="images/<%= category === "barato" ? 'img-descuento.png' : category === "romantico" ? 'img-gratis.png' : 'img-nuevo.png' %>" alt="plato nuevo" >
       <a class="zoom" href="#">Ampliar foto</a>
     </div>
