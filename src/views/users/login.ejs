@@ -12,7 +12,7 @@
               <h4 class="card-title">Login de usuario</h4>
             </div>
             <div class="card-body">
-              <form action="" class="row">
+              <form action="" class="row" method="POST">
                 <div class="col-12 mb-3">
                   <label for="email" class="form-label"
                     >Correo electrónico</label
@@ -23,6 +23,8 @@
                     id="email"
                     placeholder="name@example.com"
                   />
+                  <small class="text-danger ms-2"><%= locals.errors && errors.email ? errors.email.msg : null %></small>
+
                 </div>
                 <div class="col-12 mb-3">
                   <label for="password" class="form-label"
@@ -33,6 +35,7 @@
                     class="form-control"
                     id="password"/>
                   
+                    <small class="text-danger ms-2"><%= locals.errors && errors.password ? errors.password.msg : null %></small>
                 </div>
                 <div class="col-12 col-md-6 mb-3">
                 <div class="form-check">
